@@ -240,6 +240,9 @@ urlpatterns = (
     page('internet-health/web-literacy', 'mozorg/internet-health/web-literacy.html'),
     page('internet-health/decentralization', 'mozorg/internet-health/decentralization.html'),
 
+    page('internet-health/podcast', 'mozorg/internet-health/podcast/index.html'),
+    page('internet-health/podcast/about', 'mozorg/internet-health/podcast/about.html'),
+
     page('moss', 'mozorg/moss/index.html'),
     page('moss/foundational-technology', 'mozorg/moss/foundational-technology.html'),
     page('moss/mission-partners', 'mozorg/moss/mission-partners.html'),

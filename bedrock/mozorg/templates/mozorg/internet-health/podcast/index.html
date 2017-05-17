@@ -1,0 +1,16 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "mozorg/internet-health/podcast/base.html" %}
+
+{% block content %}
+<main role="main">
+  <h1>Internet Health Podcast</h1>
+
+  <a href=""><img src="{{ static('img/mozorg/internet-health/podcast/apple-podcasts-badge.svg') }}" alt="Subscribe on Apple Podcasts"></a>
+  <a href=""><img src="{{ static('img/mozorg/internet-health/podcast/spotify-badge.svg') }}" alt="Subscribe on Spotify"></a>
+
+  <a href="{{ url('mozorg.internet-health.podcast.about') }}">About</a>
+</main>
+{% endblock %}

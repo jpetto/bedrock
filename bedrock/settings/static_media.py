@@ -122,6 +122,12 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/mozorg/internet_health-bundle.css',
     },
+    'internet-health-podcast': {
+        'source_filenames': (
+            'css/mozorg/internet-health/podcast.scss',
+        ),
+        'output_filename': 'css/mozorg/internet_health_podcast-bundle.css',
+    },
     'health-subpage': {
         'source_filenames': (
             'css/mozorg/internet-health/health-subpage.scss',
