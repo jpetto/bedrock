@@ -4,13 +4,20 @@
 
 {% extends "mozorg/internet-health/podcast/base.html" %}
 
-{% block content %}
-<main role="main">
-  <h1>Internet Health Podcast</h1>
+{% block page_content %}
+<section class="section" id="intro">
+  <p>
+    Hi boys. I'm Tina. Dear God, this is Tina from school. I've logged over 3,000 fantasy hours on my relationship with Jimmy Jr. You don't just throw that away. Dr. Yap, once I was into you, but after seeing you torture my father, I think we should just be friends with dental benefits. It's an erotic friend fiction story that I just wrote. I hope you like it, because you're all in it. It's called 'Buttloose.' Dad, if you believe you're beautiful, you will be. I did. Argh!... Wait, I like the library. Dad, I need you to drop everything and shave my legs.
+  </p>
 
-  <a href=""><img src="{{ static('img/mozorg/internet-health/podcast/apple-podcasts-badge.svg') }}" alt="Subscribe on Apple Podcasts"></a>
-  <a href=""><img src="{{ static('img/mozorg/internet-health/podcast/spotify-badge.svg') }}" alt="Subscribe on Spotify"></a>
+  {% include 'mozorg/internet-health/podcast/includes/subscribe-links.html' %}
+</section>
 
-  <a href="{{ url('mozorg.internet-health.podcast.about') }}">About</a>
-</main>
+<section class="section" id="episodes">
+  <h2 class="section-title">Episodes</h2>
+
+  <p>
+    Our first episode launches June 13th!
+  </p>
+</section>
 {% endblock %}

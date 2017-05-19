@@ -21,10 +21,13 @@
   {% stylesheet 'internet-health-podcast' %}
 {% endblock %}
 
-{% block site_header %}
-{% endblock %}
+{% block site_header %}{% endblock %}
 
 {% block content %}
+<main role="main">
+  {% include 'mozorg/internet-health/podcast/includes/header.html' %}
+  {% block page_content %}{% endblock %}
+</main>
 {% endblock %}
 
 {% block email_form %}{% endblock %}
