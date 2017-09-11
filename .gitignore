@@ -42,6 +42,5 @@ tests/functional/results.html
 tests/functional/assets
 .eslintcache
 .docker-build*
-Dockerfile-*
 root_files/sitemap.xml
 root_files/default-urls.json
