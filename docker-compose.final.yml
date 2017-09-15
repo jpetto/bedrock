@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile-local-bedrock
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - DEV=True
+      - ALLOWED_HOSTS=*
+    volumes:
+      - .:/app
+  gulp:
+    build:
+      context: ./
+      dockerfile: Dockerfile-local-gulp
+    volumes:
+      # TODO: what container directory should we map to?
+      - ./media:/
