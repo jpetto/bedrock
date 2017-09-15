@@ -1,0 +1,14 @@
+FROM node:6.10.1
+
+ADD ./media /app/media
+WORKDIR /app
+
+RUN npm install -g gulp-cli
+
+COPY ./package.json /app/package.json
+
+RUN npm install
+
+COPY ./gulpfile.js /app/gulpfile.js
+COPY ./.eslintrc.js /app/.eslintrc.js
+COPY ./.stylelintrc /app/.stylelintrc
