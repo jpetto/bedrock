@@ -1,0 +1,10 @@
+version: '3'
+services:
+  gulp:
+    build:
+      context: ./
+      dockerfile: Dockerfile-local-gulp
+    command: gulp
+    volumes:
+      - ./media:/app/media
+      - ./static:/app/static

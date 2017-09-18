@@ -18,9 +18,6 @@ ENV PIPELINE_CLEANCSS_BINARY=cleancss
 RUN update-alternatives --install /bin/sh sh /bin/bash 10
 RUN adduser --uid 1000 --disabled-password --gecos '' --no-create-home webdev
 
-### NEW: map local bedrock root to app in container
-ADD ./ /app
-
 WORKDIR /app
 
 EXPOSE 8000
@@ -45,6 +42,7 @@ RUN pip install --no-cache-dir -r requirements/docker.txt
 COPY ./node_modules /
 COPY ./package.json /
 COPY ./lockdown.json /
+
 # --unsafe-perm required for lockdown to function
 ### removed --production because we probably don't need that for local dev?
 RUN cd / && npm install --unsafe-perm
