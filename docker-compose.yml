@@ -1,10 +1,21 @@
 version: '3'
 services:
-  gulp:
+  web:
     build:
       context: ./
-      dockerfile: Dockerfile-local-gulp
-    command: gulp
+      dockerfile: Dockerfile-local-bedrock
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - DEV=True
+      - ALLOWED_HOSTS=*
     volumes:
-      - ./media:/app/media
-      - ./static:/app/static
+      - .:/app
+      # below are negative mappings to keep from syncing large media directories
+      # into the 'web' container. must come after mapping above?
+      - media:/app/media
+volumes:
+  # these volumes are empty on purpose to clear the container's sync'ing to the
+  # host
+  media:
