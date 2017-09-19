@@ -12,10 +12,20 @@ services:
       - ALLOWED_HOSTS=*
     volumes:
       - .:/app
+      - gulpstatic:/app/static
       # below are negative mappings to keep from syncing large media directories
       # into the 'web' container. must come after mapping above?
-      - media:/app/media
+      - emptymedia:/app/media
+  gulp:
+    build:
+      context: ./
+      dockerfile: Dockerfile-local-gulp
+    command: gulp
+    volumes:
+      - ./media:/app/media
+      - gulpstatic:/app/static
+
 volumes:
-  # these volumes are empty on purpose to clear the container's sync'ing to the
-  # host
-  media:
+    # these volumes are empty on purpose to clear the container's sync'ing to the host
+    emptymedia:
+    gulpstatic:
