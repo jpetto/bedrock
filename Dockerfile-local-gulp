@@ -3,8 +3,6 @@ FROM node:6.10.1
 ADD ./media /app/media
 WORKDIR /app
 
-RUN mkdir static
-
 RUN npm install -g gulp-cli
 
 COPY ./package.json package.json
@@ -14,3 +12,6 @@ RUN npm install
 COPY ./gulpfile.js gulpfile.js
 COPY ./.eslintrc.js .eslintrc.js
 COPY ./.stylelintrc .stylelintrc
+
+# trying to copy everything in container's media directory to container's static dir
+RUN mkdir static && cp -r media/ static/

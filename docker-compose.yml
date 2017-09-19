@@ -12,7 +12,7 @@ services:
       - ALLOWED_HOSTS=*
     volumes:
       - .:/app
-      - gulpstatic:/app/static
+      #- gulpstatic:/app/static:ro
       # below are negative mappings to keep from syncing large media directories
       # into the 'web' container. must come after mapping above?
       - emptymedia:/app/media
