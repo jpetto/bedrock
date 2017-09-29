@@ -49,5 +49,6 @@ COPY ./lockdown.json /
 ### removed --production because we probably don't need that for local dev?
 RUN cd / && npm install --unsafe-perm
 
-### trying to copy everything in container's media directory to container's static dir
+### copy everything in container's media directory to container's static dir
+### (in hopes to avoid large/heavy sync'ing first time running container)
 RUN mkdir static && cp -r media/ static/
