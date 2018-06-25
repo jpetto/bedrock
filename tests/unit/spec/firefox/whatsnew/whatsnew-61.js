@@ -43,30 +43,28 @@ describe('whatsnew-61.js', function () {
         });
     });
 
-    describe('showFocusOrKlar', function () {
+    describe('chooseFocusOrKlar', function () {
 
-        it('should call showFocus if country is not tagged for Klar', function () {
-            spyOn(Mozilla.WNP61, 'showFocus');
-
-            Mozilla.WNP61.showFocusOrKlar('pl');
-
-            expect(Mozilla.WNP61.showFocus).toHaveBeenCalled();
+        beforeEach(function() {
+            spyOn(Mozilla.WNP61, 'showFocusOrKlar');
         });
 
-        it('should call showFocus if no country code is provided', function () {
-            spyOn(Mozilla.WNP61, 'showFocus');
+        it('should call showFocusOrKlar with "focus" if country is not marked for Klar', function () {
+            Mozilla.WNP61.chooseFocusOrKlar('pl');
 
-            Mozilla.WNP61.showFocusOrKlar();
-
-            expect(Mozilla.WNP61.showFocus).toHaveBeenCalled();
+            expect(Mozilla.WNP61.showFocusOrKlar).toHaveBeenCalledWith('pl', 'focus');
         });
 
-        it('should call showKlar if country is tagged for Klar', function () {
-            spyOn(Mozilla.WNP61, 'showKlar');
+        it('should call showFocusOrKlar with "focus" if no country code is provided', function () {
+            Mozilla.WNP61.chooseFocusOrKlar();
 
-            Mozilla.WNP61.showFocusOrKlar('de');
+            expect(Mozilla.WNP61.showFocusOrKlar).toHaveBeenCalledWith(undefined, "focus");
+        });
 
-            expect(Mozilla.WNP61.showKlar).toHaveBeenCalled();
+        it('should call showFocusOrKlar with "klar" if country is tagged for Klar', function () {
+            Mozilla.WNP61.chooseFocusOrKlar('de');
+
+            expect(Mozilla.WNP61.showFocusOrKlar).toHaveBeenCalledWith('de', 'klar');
         });
     });
 });

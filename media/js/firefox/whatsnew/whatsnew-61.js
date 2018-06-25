@@ -70,43 +70,6 @@ This iteration of /whatsnew has multiple states:
         form.init();
     };
 
-    Mozilla.WNP61.showFocus = function(countryCode) {
-        // Show the content
-        this.mainContent.classList.add('show-focus');
-
-        // Set the title
-        document.title = this.$strings.data('fxfocus-title');
-
-        // swap out Firefox logo for Focus logo
-        this.logoFx.classList.replace('showing', 'hiding');
-
-        setTimeout(function() {
-            this.logoFocus.classList.replace('hiding', 'showing');
-        }.bind(this), 150);
-
-        var form = new Mozilla.SendYourself('send-focus');
-        form.init(countryCode);
-    };
-
-
-    Mozilla.WNP61.showKlar = function(countryCode) {
-        // Show the content
-        this.mainContent.classList.add('show-klar');
-
-        // Set the title
-        document.title = this.$strings.data('fxfocus-title');
-
-        // swap out Firefox logo for Focus logo
-        this.logoFx.classList.replace('showing', 'hiding');
-
-        setTimeout(function() {
-            this.logoFocus.classList.replace('hiding', 'showing');
-        }.bind(this), 150);
-
-        var form = new Mozilla.SendYourself('send-klar');
-        form.init(countryCode);
-    };
-
     Mozilla.WNP61.geolocate = function(callback) {
         $.get('/country-code.json')
             .done(function(data) {
@@ -121,16 +84,32 @@ This iteration of /whatsnew has multiple states:
             });
     };
 
-    Mozilla.WNP61.showFocusOrKlar = function(countryCode) {
-        if (countryCode) {
-            if (this.klarCountryCodes.includes(countryCode)) {
-                this.showKlar(countryCode);
-            } else {
-                this.showFocus(countryCode);
-            }
-        } else {
-            this.showFocus();
+    Mozilla.WNP61.showFocusOrKlar = function(countryCode, product) {
+        // Show the content
+        this.mainContent.classList.add('show-' + product);
+
+        // Set the title
+        document.title = this.$strings.data('fxfocus-title');
+
+        // swap out Firefox logo for Focus logo
+        this.logoFx.classList.replace('showing', 'hiding');
+
+        setTimeout(function() {
+            this.logoFocus.classList.replace('hiding', 'showing');
+        }.bind(this), 150);
+
+        var form = new Mozilla.SendYourself('send-' + product);
+        form.init(countryCode);
+    };
+
+    Mozilla.WNP61.chooseFocusOrKlar = function(countryCode) {
+        var product = 'focus';
+
+        if (countryCode && this.klarCountryCodes.includes(countryCode)) {
+            product = 'klar';
         }
+
+        this.showFocusOrKlar(countryCode, product);
     };
 
     Mozilla.WNP61.checkUpToDate = function() {
@@ -156,7 +135,7 @@ This iteration of /whatsnew has multiple states:
             // if user is signed in to FxA and has mobile devices set up, perform geo lookup
             // to determine whether to show Focus or Klar content
         } else {
-            this.geolocate(this.showFocusOrKlar.bind(this));
+            this.geolocate(this.chooseFocusOrKlar.bind(this));
         }
     };
 })(window.Mozilla, window.jQuery);
