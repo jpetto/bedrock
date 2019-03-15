@@ -1332,6 +1332,13 @@
     },
     {
       "files": [
+        "js/base/mozilla-traffic-cop.js",
+        "js/firefox/home/experiment-of-experiments.js"
+      ],
+      "name": "experiment-of-experiments"
+    },
+    {
+      "files": [
         "js/firefox/new/install/variant.js"
       ],
       "name": "experiment-firefox-download-install-variant"

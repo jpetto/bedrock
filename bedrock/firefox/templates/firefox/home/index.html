@@ -17,7 +17,11 @@
 {% block page_title %}{{ _('The new, fast browser for Mac, PC and Linux') }} | {{ title_suffix }}{% endblock %}
 {% block page_desc %}{{ _('Responsive engine, less memory usage and packed with features. Download for desktop now.') }}{% endblock %}
 
-{% block experiments %}{% endblock %}
+{% block experiments %}
+  {% if switch('experiment_of_experiments', ['en-US']) %}
+    {{ js_bundle('experiment-of-experiments') }}
+  {% endif %}
+{% endblock %}
 
 {% block page_css %}
   {{ css_bundle('firefox-home') }}
@@ -34,7 +38,7 @@
     <div class="content">
       <div class="header-content">
       {% if LANG.startswith('en') %}
-        <h1>The new <strong>Firefox</strong></h1>
+        <h1 id="real-headline">The new <strong>Firefox</strong></h1>
       {% else %}
         <h1>{{ _('The New Firefox') }}</h1>
       {% endif %}
